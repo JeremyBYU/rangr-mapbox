@@ -70,7 +70,7 @@
           </form>
         </div>
         <div class="column is-two-thirds">
-          <my-map :weight="weight"></my-map>
+          <my-map :weight="weight" :landuse-risk-url="landuseRiskUrl" :census-risk-url="censusRiskUrl"></my-map>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@
 
 <script>
 import Map from "./Map.vue";
-import vueSlider from 'vue-slider-component'
+import vueSlider from "vue-slider-component";
 export default {
   name: "app",
   components: {
@@ -92,14 +92,34 @@ export default {
   },
   data() {
     return {
-      available_times: [[6, "Sunday 6 AM"], [12, "Sunday 12 PM"], [20, "Sunday 8 PM"], [30, "Monday 6 AM"], [36, "Monday 12 PM"], [44, "Monay 8 PM"]],
+      available_times: [
+        [6, "Sunday 6 AM"],
+        [12, "Sunday 12 PM"],
+        [20, "Sunday 8 PM"],
+        [30, "Monday 6 AM"],
+        [36, "Monday 12 PM"],
+        [44, "Monay 8 PM"]
+      ],
       available_gilde_ratios: [1, 5, 10],
       available_altitudes: [100, 200, 300],
       time: 6,
       glide_ratio: 1,
       altitude: 100,
-      weight: .5,
+      weight: 0.5
     };
+  },
+  computed: {
+    censusRiskUrl: function() {
+      let beggining = 'census_risk'
+      let url_string = `${beggining}_rg_${this.glide_ratio}_a_${this.altitude}`
+      return url_string
+    },
+    landuseRiskUrl: function() {
+      // this.glide_ratio.toFixed(0).padStart(2, 0)
+      let beggining = 'landuse_risk'
+      let url_string = `${beggining}_rg_${this.glide_ratio}_a_${this.altitude}_t_${this.time.toFixed(0).padStart(2, 0)}`
+      return url_string
+    }
   }
 };
 </script>
