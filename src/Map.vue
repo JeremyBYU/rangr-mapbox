@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     this.map = new mapboxgl.Map(MAPBOX_INIT);
-    window.map = this.map.add;
+    window.map = this.map;
   },
   methods: {
     updateSource(layerName, sourceName, newUrl) {

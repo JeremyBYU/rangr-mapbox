@@ -7,13 +7,13 @@
           <a class="navbar-item" href="../">
             <img src="./assets/logo.png" alt="Logo">
           </a>
-          <span class="navbar-burger burger" data-target="navbarMenu">
+          <span class="navbar-burger burger" data-target="navbarMenu" v-on:click="isActive = !isActive">
             <span></span>
             <span></span>
             <span></span>
           </span>
         </div>
-        <div id="navbarMenu" class="navbar-menu">
+        <div id="navbarMenu" class="navbar-menu" :class="{'is-active': isActive}">
           <div class="navbar-end">
             <a class="navbar-item is-active">
               Home
@@ -105,7 +105,8 @@ export default {
       time: 6,
       glide_ratio: 1,
       altitude: 100,
-      weight: 0.5
+      weight: 0.5,
+      isActive: false
     };
   },
   computed: {

@@ -27,8 +27,8 @@ export const LAYER_TEMPLATE = {
 
 export const MAPBOX_INIT = {
   container: "map",
-  center: [-117.04479558846435, 32.74894947579389],
-  zoom: 10.471043167851036,
+  center: [-117.067786, 32.710],
+  zoom: 9.9,
   bearing: 1.102829899100243,
   pitch: 0,
   style: {

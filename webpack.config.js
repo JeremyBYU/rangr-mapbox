@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './docs'),
-    publicPath: '/rangr-mapbox/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/rangr-mapbox/' : '/docs/',
     filename: 'build.js'
   },
   module: {
